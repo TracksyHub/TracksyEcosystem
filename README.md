@@ -1,112 +1,159 @@
-# LiteRT-LM
+<p align="center">
+  <img width="400" height="400" src="https://github.com/user-attachments/assets/02314c23-648e-4532-a004-79c0b6cb2e83" />
+</p>
 
-LiteRT-LM is Google's production-ready, high-performance, open-source inference
-framework for deploying Large Language Models on edge devices.
+<h1 align="center">Tracksy</h1>
 
-🔗 [Product Website](https://ai.google.dev/edge/litert-lm)
+<div align="center">
+  <p><strong>Explain what actually happened across your product, systems, and flows</strong></p>
+  <p>
+    Event intelligence • Trace narratives • Anomaly detection • Journey analytics • AI-assisted investigation
+  </p>
+</div>
 
-## 🔥 What's New: Gemma 4 support with LiteRT-LM
+---
 
-Deploy [Gemma 4](https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/)
-across a broad range of hardware with stellar performance
-([blog](https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/)).
+### 🚀 Quick Links
 
-👉 Try on Linux, macOS, Windows (WSL) or Raspberry Pi with the
-[LiteRT-LM CLI](https://ai.google.dev/edge/litert-lm/cli):
+[![Web App](https://img.shields.io/badge/Web%20App-Open-3b82f6?style=for-the-badge&logo=googlechrome&logoColor=white)](#)
+[![Docs](https://img.shields.io/badge/Docs-Read-8b5cf6?style=for-the-badge&logo=readthedocs&logoColor=white)](#)
+[![API](https://img.shields.io/badge/API-Reference-10b981?style=for-the-badge)](#)
+[![Telegram](https://img.shields.io/badge/Telegram-Join-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)](#)
 
-```bash
-litert-lm run  \
-   --from-huggingface-repo=litert-community/gemma-4-E2B-it-litert-lm \
-   gemma-4-E2B-it.litertlm \
-   --prompt="What is the capital of France?"
+> [!IMPORTANT]
+> Tracksy turns fragmented events into structured traces that show how and why things happened
+
+---
+
+## What’s Broken Today
+
+Teams already collect events, logs, metrics, and callbacks  
+but the story is missing
+
+| Fragmentation | Result |
+|---|---|
+| Product analytics, backend logs, and external systems live separately | No unified journey |
+| Dashboards show numbers, not sequences | No explanation |
+| Alerts fire without context | Investigation slows down |
+
+> [!WARNING]
+> Seeing that something changed is not the same as understanding why it changed
+
+---
+
+## What Changes With Tracksy
+
+Tracksy introduces a trace-first model
+
+```text
+Events → Signals → Traces → Cases → Decisions
 ```
 
-## 🌟 Key Features
+Instead of isolated data points  
+you get connected journeys with meaning
 
--   📱 **Cross-Platform Support**: Android, iOS, Web, Desktop, and IoT (e.g.
-Raspberry Pi).
--   🚀 **Hardware Acceleration**: Peak performance via GPU and NPU accelerators.
--   👁️ **Multi-Modality**: Support for vision and audio inputs.
--   🔧 **Tool Use**: Function calling support for agentic workflows.
--   📚 **Broad Model Support**: Gemma, Llama, Phi-4, Qwen, and more.
+| Layer | Value |
+|---|---|
+| Events | Raw actions across systems |
+| Signals | Interpreted patterns and anomalies |
+| Traces | Full story of a user or flow |
+| Cases | Investigation-ready incidents |
 
-![](./docs/api/kotlin/demo.gif)
-
----
-
-## 🚀 Production-Ready for Google's Products
-
-LiteRT-LM powers on-device GenAI experiences in **Chrome**, **Chromebook Plus**,
-**Pixel Watch**, and more.
-
-You can also try the
-[Google AI Edge Gallery](https://github.com/google-ai-edge/gallery) app to run
-models immediately on your device.
-
-| **Install the app today from Google Play** | **Install the app today from App Store** |
-| :---: | :---: |
-| <a href='https://play.google.com/store/apps/details?id=com.google.ai.edge.gallery'><img alt='Get it on Google Play' height="120" src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png'/></a> | <a href="https://apps.apple.com/us/app/google-ai-edge-gallery/id6749645337?itscg=30200&itsct=apps_box_badge&mttnsubad=6749645337" style="display: inline-block;"> <img src="https://toolbox.marketingtools.apple.com/api/v2/badges/download-on-the-app-store/black/en-us?releaseDate=1771977600" alt="Download on the App Store" style="width: 246px; height: 90px; vertical-align: middle; object-fit: contain;" /></a> |
-
-### 📰 Blogs & Announcements
-
-| Link | Description |
-| :--- | :--- |
-| [Bring state-of-the-art agentic skills to the edge with Gemma 4](https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/) | Deploy Gemma 4 in-app and across a broader range of devices with stellar performance and broad reach using LiteRT-LM. |
-| [On-device GenAI in Chrome, Chromebook Plus and Pixel Watch](https://developers.googleblog.com/on-device-genai-in-chrome-chromebook-plus-and-pixel-watch-with-litert-lm/) | Deploy language models on wearables and browser-based platforms using LiteRT-LM at scale. |
-| [On-device Function Calling in Google AI Edge Gallery](https://developers.googleblog.com/on-device-function-calling-in-google-ai-edge-gallery/) | Explore how to fine-tune FunctionGemma and enable function calling capabilities powered by LiteRT-LM Tool Use APIs. |
-| [Google AI Edge small language models, multimodality, and function calling](https://developers.googleblog.com/google-ai-edge-small-language-models-multimodality-rag-function-calling/) | Latest insights on RAG, multimodality, and function calling for edge language models. |
+> [!TIP]
+> One query can move you from metric → journey → root cause
 
 ---
 
-## 🏃 Quick Start
+## Proof It Works
 
-### 🔗 Key Links
+| Before | After with Tracksy |
+|---|---|
+| “Something broke in checkout” | “Step 3 degraded after latency spike in payment service” |
+| “Users drop off here” | “Retry loop appears for mobile users in one region” |
+| “We have alerts” | “One case with timeline, entities, and explanation” |
 
--   👉 [Technical Overview](https://ai.google.dev/edge/litert-lm/overview) including performance benchmarks, model support, and more.
--   👉 [LiteRT-LM CLI Guide](https://ai.google.dev/edge/litert-lm/cli) including installation, getting started, and advanced usage.
+---
 
-### ⚡ Quick Try (No Code)
+## Try the Core Flow
 
-Try LiteRT-LM immediately from your terminal without writing a single line of code using [`uv`](https://docs.astral.sh/uv/getting-started/installation/):
+| Step | Action | Outcome |
+|---|---|---|
+| 1 | Send events via SDK or webhook | Data enters unified model |
+| 2 | Attach IDs (user, session, flow) | Events become traceable |
+| 3 | Open Trace Explorer | Full journey appears |
+| 4 | Ask AI what changed | Get explanation |
 
-```bash
-uv tool install litert-lm
+> [!IMPORTANT]
+> Start with one critical flow (signup, checkout, payout)
 
-litert-lm run \
-  --from-huggingface-repo=google/gemma-3n-E2B-it-litert-lm \
-  gemma-3n-E2B-it-int4 \
-  --prompt="What is the capital of France?"
+---
+
+## Real Scenarios
+
+### Funnel breakdown
+A conversion drop is detected  
+Tracksy shows the exact path, step, and cohort affected
+
+### Risk detection
+Unusual behavior across linked entities  
+Grouped into one trace with signals and sequence
+
+### Incident investigation
+Error spike appears  
+Replay timeline across services and users in one view
+
+---
+
+## Mechanics in Brief
+
+```text
+Ingestion
+  SDKs • Webhooks • Integrations
+
+Normalization
+  Unified schema • Identity mapping • Field alignment
+
+Intelligence
+  Anomaly detection • Behavior analysis • Path evaluation
+
+Delivery
+  Dashboards • Trace explorer • Cases • API • Alerts
 ```
 
+---
+
+## Compared to Alternatives
+
+| Approach | Limitation | Tracksy |
+|---|---|---|
+| Dashboards | Metrics only | Explains journeys |
+| Logs | Accurate but slow | Reconstructed stories |
+| Alerts | No context | Signals + traces |
+| On-chain tools | Isolated data | Cross-system linking |
 
 ---
 
-### 📚 Supported Language APIs
-Ready to get started? Explore our language-specific guides and setup instructions.
+## Failure Cases
 
-| Language | Status | Best For... | Documentation |
-| :--- | :--- | :--- | :--- |
-| **Kotlin** | ✅ Stable | Android apps & JVM | [Android (Kotlin) Guide](https://ai.google.dev/edge/litert-lm/android) |
-| **Python** | ✅ Stable | Prototyping & Scripting | [Python Guide](https://ai.google.dev/edge/litert-lm/python) |
-| **C++** | ✅ Stable | High-performance native | [C++ Guide](https://ai.google.dev/edge/litert-lm/cpp) |
-| **Swift** | 🚀 In Dev | Native iOS & macOS | (Coming Soon) |
+| Limitation | Why |
+|---|---|
+| Missing IDs | Weak trace stitching |
+| Incomplete data | Partial story |
+| Manual processes | No signals |
+| Final decisions | Advisory only |
 
-#### 🏗️ Build From Source
-
-This [guide](./docs/getting-started/build-and-run.md) shows how you can
-compile LiteRT-LM from source. If you want to build the program from source,
-you should checkout the stable [![Latest
-Release](https://img.shields.io/github/v/release/google-ai-edge/LiteRT-LM)](https://github.com/google-ai-edge/LiteRT-LM/releases/latest) tag.
+> [!CAUTION]
+> Tracksy depends on structured, connected data to deliver accurate insights
 
 ---
 
-## 📦 Releases
+## Why Teams Use Tracksy
 
--   **v0.10.1**: Deploy [Gemma 4](https://blog.google/innovation-and-ai/technology/developers-tools/gemma-4/) with stellar performance ([blog](https://developers.googleblog.com/bring-state-of-the-art-agentic-skills-to-the-edge-with-gemma-4/)) and introduce [LiteRT-LM CLI](https://ai.google.dev/edge/litert-lm/cli).
--   **v0.9.0**: Improvements to function calling capabilities, better app performance stability.
--   **v0.8.0**: Desktop GPU support and Multi-Modality.
--   **v0.7.0**: NPU acceleration for Gemma models.
+Tracksy is not another dashboard  
+it is an investigation layer
 
-For a full list of releases, see [GitHub Releases](https://github.com/google-ai-edge/LiteRT-LM/releases).
+It helps teams move from:
+- scattered signals  
+- to explainable journeys  
+- to faster decisions
 
----
