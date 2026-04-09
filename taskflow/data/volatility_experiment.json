@@ -1,0 +1,62 @@
+export interface ExperimentParameters {
+  tokenSymbol: string
+  analysisWindowMinutes: number
+  volatilityThreshold: number
+}
+
+export type ExperimentStatus = "draft" | "running" | "completed" | "failed"
+
+export interface Experiment {
+  experimentId: string
+  createdAt: string
+  description: string
+  parameters: ExperimentParameters
+  status: ExperimentStatus
+  results: Record<string, any> | null
+  notes: string
+}
+
+export class ExperimentManager {
+  private experiments: Map<string, Experiment> = new Map()
+
+  createExperiment(exp: Experiment): void {
+    if (this.experiments.has(exp.experimentId)) {
+      throw new Error(`Experiment with ID ${exp.experimentId} already exists`)
+    }
+    this.experiments.set(exp.experimentId, exp)
+  }
+
+  updateStatus(id: string, status: ExperimentStatus): void {
+    const exp = this.experiments.get(id)
+    if (!exp) throw new Error(`Experiment not found: ${id}`)
+    exp.status = status
+    this.experiments.set(id, exp)
+  }
+
+  addResults(id: string, results: Record<string, any>): void {
+    const exp = this.experiments.get(id)
+    if (!exp) throw new Error(`Experiment not found: ${id}`)
+    exp.results = results
+    exp.status = "completed"
+    this.experiments.set(id, exp)
+  }
+
+  addNote(id: string, note: string): void {
+    const exp = this.experiments.get(id)
+    if (!exp) throw new Error(`Experiment not found: ${id}`)
+    exp.notes = exp.notes ? exp.notes + "\n" + note : note
+    this.experiments.set(id, exp)
+  }
+
+  getExperiment(id: string): Experiment | undefined {
+    return this.experiments.get(id)
+  }
+
+  listExperiments(): Experiment[] {
+    return Array.from(this.experiments.values())
+  }
+
+  deleteExperiment(id: string): void {
+    this.experiments.delete(id)
+  }
+}

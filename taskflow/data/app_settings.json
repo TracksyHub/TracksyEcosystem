@@ -1,0 +1,45 @@
+export interface LoggingConfig {
+  level: "debug" | "info" | "warn" | "error"
+  destinations: ("console" | "file")[]
+  filePath?: string
+}
+
+export interface FeatureFlags {
+  enableDiagnostics: boolean
+  enableRealTimeAlerts: boolean
+}
+
+export interface ProjectConfig {
+  projectName: string
+  environment: "development" | "staging" | "production"
+  logging: LoggingConfig
+  features: FeatureFlags
+}
+
+export class ConfigManager {
+  private config: ProjectConfig
+
+  constructor(initialConfig: ProjectConfig) {
+    this.config = initialConfig
+  }
+
+  getConfig(): ProjectConfig {
+    return this.config
+  }
+
+  updateLogging(newLogging: Partial<LoggingConfig>): void {
+    this.config.logging = { ...this.config.logging, ...newLogging }
+  }
+
+  toggleFeature(feature: keyof FeatureFlags, enabled: boolean): void {
+    this.config.features[feature] = enabled
+  }
+
+  setEnvironment(env: ProjectConfig["environment"]): void {
+    this.config.environment = env
+  }
+
+  printConfig(): void {
+    console.log("Current Project Configuration:", JSON.stringify(this.config, null, 2))
+  }
+}
